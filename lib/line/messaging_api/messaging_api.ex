@@ -141,13 +141,13 @@ defmodule LINE.MessagingAPI.MessagingApi do
 
   """
   @spec delete_rich_menu(String.t(), keyword) :: :ok | :error
-  def delete_rich_menu(richMenuId, opts \\ []) do
+  def delete_rich_menu(rich_menu_id, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
-      args: [richMenuId: richMenuId],
+      args: [rich_menu_id: rich_menu_id],
       call: {LINE.MessagingAPI.MessagingApi, :delete_rich_menu},
-      url: "/v2/bot/richmenu/#{richMenuId}",
+      url: "/v2/bot/richmenu/#{rich_menu_id}",
       method: :delete,
       response: [{200, nil}],
       opts: opts
@@ -164,13 +164,13 @@ defmodule LINE.MessagingAPI.MessagingApi do
   """
   @spec delete_rich_menu_alias(String.t(), keyword) ::
           :ok | {:error, LINE.MessagingAPI.ErrorResponse.t()}
-  def delete_rich_menu_alias(richMenuAliasId, opts \\ []) do
+  def delete_rich_menu_alias(rich_menu_alias_id, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
-      args: [richMenuAliasId: richMenuAliasId],
+      args: [rich_menu_alias_id: rich_menu_alias_id],
       call: {LINE.MessagingAPI.MessagingApi, :delete_rich_menu_alias},
-      url: "/v2/bot/richmenu/alias/#{richMenuAliasId}",
+      url: "/v2/bot/richmenu/alias/#{rich_menu_alias_id}",
       method: :delete,
       response: [{200, nil}, {400, {LINE.MessagingAPI.ErrorResponse, :t}}],
       opts: opts
@@ -346,13 +346,13 @@ defmodule LINE.MessagingAPI.MessagingApi do
   """
   @spec get_group_member_count(String.t(), keyword) ::
           {:ok, LINE.MessagingAPI.GroupMemberCountResponse.t()} | :error
-  def get_group_member_count(groupId, opts \\ []) do
+  def get_group_member_count(group_id, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
-      args: [groupId: groupId],
+      args: [group_id: group_id],
       call: {LINE.MessagingAPI.MessagingApi, :get_group_member_count},
-      url: "/v2/bot/group/#{groupId}/members/count",
+      url: "/v2/bot/group/#{group_id}/members/count",
       method: :get,
       response: [{200, {LINE.MessagingAPI.GroupMemberCountResponse, :t}}],
       opts: opts
@@ -369,13 +369,13 @@ defmodule LINE.MessagingAPI.MessagingApi do
   """
   @spec get_group_member_profile(String.t(), String.t(), keyword) ::
           {:ok, LINE.MessagingAPI.GroupUserProfileResponse.t()} | :error
-  def get_group_member_profile(groupId, userId, opts \\ []) do
+  def get_group_member_profile(group_id, user_id, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
-      args: [groupId: groupId, userId: userId],
+      args: [group_id: group_id, user_id: user_id],
       call: {LINE.MessagingAPI.MessagingApi, :get_group_member_profile},
-      url: "/v2/bot/group/#{groupId}/member/#{userId}",
+      url: "/v2/bot/group/#{group_id}/member/#{user_id}",
       method: :get,
       response: [{200, {LINE.MessagingAPI.GroupUserProfileResponse, :t}}],
       opts: opts
@@ -398,14 +398,14 @@ defmodule LINE.MessagingAPI.MessagingApi do
   """
   @spec get_group_members_ids(String.t(), keyword) ::
           {:ok, LINE.MessagingAPI.MembersIdsResponse.t()} | :error
-  def get_group_members_ids(groupId, opts \\ []) do
+  def get_group_members_ids(group_id, opts \\ []) do
     client = opts[:client] || @default_client
     query = Keyword.take(opts, [:start])
 
     client.request(%{
-      args: [groupId: groupId],
+      args: [group_id: group_id],
       call: {LINE.MessagingAPI.MessagingApi, :get_group_members_ids},
-      url: "/v2/bot/group/#{groupId}/members/ids",
+      url: "/v2/bot/group/#{group_id}/members/ids",
       method: :get,
       query: query,
       response: [{200, {LINE.MessagingAPI.MembersIdsResponse, :t}}],
@@ -423,13 +423,13 @@ defmodule LINE.MessagingAPI.MessagingApi do
   """
   @spec get_group_summary(String.t(), keyword) ::
           {:ok, LINE.MessagingAPI.GroupSummaryResponse.t()} | :error
-  def get_group_summary(groupId, opts \\ []) do
+  def get_group_summary(group_id, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
-      args: [groupId: groupId],
+      args: [group_id: group_id],
       call: {LINE.MessagingAPI.MessagingApi, :get_group_summary},
-      url: "/v2/bot/group/#{groupId}/summary",
+      url: "/v2/bot/group/#{group_id}/summary",
       method: :get,
       response: [{200, {LINE.MessagingAPI.GroupSummaryResponse, :t}}],
       opts: opts
@@ -677,13 +677,13 @@ defmodule LINE.MessagingAPI.MessagingApi do
   """
   @spec get_profile(String.t(), keyword) ::
           {:ok, LINE.MessagingAPI.UserProfileResponse.t()} | :error
-  def get_profile(userId, opts \\ []) do
+  def get_profile(user_id, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
-      args: [userId: userId],
+      args: [user_id: user_id],
       call: {LINE.MessagingAPI.MessagingApi, :get_profile},
-      url: "/v2/bot/profile/#{userId}",
+      url: "/v2/bot/profile/#{user_id}",
       method: :get,
       response: [{200, {LINE.MessagingAPI.UserProfileResponse, :t}}],
       opts: opts
@@ -700,13 +700,13 @@ defmodule LINE.MessagingAPI.MessagingApi do
   """
   @spec get_rich_menu(String.t(), keyword) ::
           {:ok, LINE.MessagingAPI.RichMenuResponse.t()} | :error
-  def get_rich_menu(richMenuId, opts \\ []) do
+  def get_rich_menu(rich_menu_id, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
-      args: [richMenuId: richMenuId],
+      args: [rich_menu_id: rich_menu_id],
       call: {LINE.MessagingAPI.MessagingApi, :get_rich_menu},
-      url: "/v2/bot/richmenu/#{richMenuId}",
+      url: "/v2/bot/richmenu/#{rich_menu_id}",
       method: :get,
       response: [{200, {LINE.MessagingAPI.RichMenuResponse, :t}}],
       opts: opts
@@ -723,13 +723,13 @@ defmodule LINE.MessagingAPI.MessagingApi do
   """
   @spec get_rich_menu_alias(String.t(), keyword) ::
           {:ok, LINE.MessagingAPI.RichMenuAliasResponse.t()} | :error
-  def get_rich_menu_alias(richMenuAliasId, opts \\ []) do
+  def get_rich_menu_alias(rich_menu_alias_id, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
-      args: [richMenuAliasId: richMenuAliasId],
+      args: [rich_menu_alias_id: rich_menu_alias_id],
       call: {LINE.MessagingAPI.MessagingApi, :get_rich_menu_alias},
-      url: "/v2/bot/richmenu/alias/#{richMenuAliasId}",
+      url: "/v2/bot/richmenu/alias/#{rich_menu_alias_id}",
       method: :get,
       response: [{200, {LINE.MessagingAPI.RichMenuAliasResponse, :t}}],
       opts: opts
@@ -796,13 +796,13 @@ defmodule LINE.MessagingAPI.MessagingApi do
   """
   @spec get_rich_menu_id_of_user(String.t(), keyword) ::
           {:ok, LINE.MessagingAPI.RichMenuIdResponse.t()} | :error
-  def get_rich_menu_id_of_user(userId, opts \\ []) do
+  def get_rich_menu_id_of_user(user_id, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
-      args: [userId: userId],
+      args: [user_id: user_id],
       call: {LINE.MessagingAPI.MessagingApi, :get_rich_menu_id_of_user},
-      url: "/v2/bot/user/#{userId}/richmenu",
+      url: "/v2/bot/user/#{user_id}/richmenu",
       method: :get,
       response: [{200, {LINE.MessagingAPI.RichMenuIdResponse, :t}}],
       opts: opts
@@ -840,13 +840,13 @@ defmodule LINE.MessagingAPI.MessagingApi do
   """
   @spec get_room_member_count(String.t(), keyword) ::
           {:ok, LINE.MessagingAPI.RoomMemberCountResponse.t()} | :error
-  def get_room_member_count(roomId, opts \\ []) do
+  def get_room_member_count(room_id, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
-      args: [roomId: roomId],
+      args: [room_id: room_id],
       call: {LINE.MessagingAPI.MessagingApi, :get_room_member_count},
-      url: "/v2/bot/room/#{roomId}/members/count",
+      url: "/v2/bot/room/#{room_id}/members/count",
       method: :get,
       response: [{200, {LINE.MessagingAPI.RoomMemberCountResponse, :t}}],
       opts: opts
@@ -863,13 +863,13 @@ defmodule LINE.MessagingAPI.MessagingApi do
   """
   @spec get_room_member_profile(String.t(), String.t(), keyword) ::
           {:ok, LINE.MessagingAPI.RoomUserProfileResponse.t()} | :error
-  def get_room_member_profile(roomId, userId, opts \\ []) do
+  def get_room_member_profile(room_id, user_id, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
-      args: [roomId: roomId, userId: userId],
+      args: [room_id: room_id, user_id: user_id],
       call: {LINE.MessagingAPI.MessagingApi, :get_room_member_profile},
-      url: "/v2/bot/room/#{roomId}/member/#{userId}",
+      url: "/v2/bot/room/#{room_id}/member/#{user_id}",
       method: :get,
       response: [{200, {LINE.MessagingAPI.RoomUserProfileResponse, :t}}],
       opts: opts
@@ -892,14 +892,14 @@ defmodule LINE.MessagingAPI.MessagingApi do
   """
   @spec get_room_members_ids(String.t(), keyword) ::
           {:ok, LINE.MessagingAPI.MembersIdsResponse.t()} | :error
-  def get_room_members_ids(roomId, opts \\ []) do
+  def get_room_members_ids(room_id, opts \\ []) do
     client = opts[:client] || @default_client
     query = Keyword.take(opts, [:start])
 
     client.request(%{
-      args: [roomId: roomId],
+      args: [room_id: room_id],
       call: {LINE.MessagingAPI.MessagingApi, :get_room_members_ids},
-      url: "/v2/bot/room/#{roomId}/members/ids",
+      url: "/v2/bot/room/#{room_id}/members/ids",
       method: :get,
       query: query,
       response: [{200, {LINE.MessagingAPI.MembersIdsResponse, :t}}],
@@ -939,13 +939,13 @@ defmodule LINE.MessagingAPI.MessagingApi do
   """
   @spec issue_link_token(String.t(), keyword) ::
           {:ok, LINE.MessagingAPI.IssueLinkTokenResponse.t()} | :error
-  def issue_link_token(userId, opts \\ []) do
+  def issue_link_token(user_id, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
-      args: [userId: userId],
+      args: [user_id: user_id],
       call: {LINE.MessagingAPI.MessagingApi, :issue_link_token},
-      url: "/v2/bot/user/#{userId}/linkToken",
+      url: "/v2/bot/user/#{user_id}/linkToken",
       method: :post,
       response: [{200, {LINE.MessagingAPI.IssueLinkTokenResponse, :t}}],
       opts: opts
@@ -961,13 +961,13 @@ defmodule LINE.MessagingAPI.MessagingApi do
 
   """
   @spec leave_group(String.t(), keyword) :: :ok | {:error, LINE.MessagingAPI.ErrorResponse.t()}
-  def leave_group(groupId, opts \\ []) do
+  def leave_group(group_id, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
-      args: [groupId: groupId],
+      args: [group_id: group_id],
       call: {LINE.MessagingAPI.MessagingApi, :leave_group},
-      url: "/v2/bot/group/#{groupId}/leave",
+      url: "/v2/bot/group/#{group_id}/leave",
       method: :post,
       response: [
         {200, nil},
@@ -987,13 +987,13 @@ defmodule LINE.MessagingAPI.MessagingApi do
 
   """
   @spec leave_room(String.t(), keyword) :: :ok | :error
-  def leave_room(roomId, opts \\ []) do
+  def leave_room(room_id, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
-      args: [roomId: roomId],
+      args: [room_id: room_id],
       call: {LINE.MessagingAPI.MessagingApi, :leave_room},
-      url: "/v2/bot/room/#{roomId}/leave",
+      url: "/v2/bot/room/#{room_id}/leave",
       method: :post,
       response: [{200, nil}],
       opts: opts
@@ -1009,13 +1009,13 @@ defmodule LINE.MessagingAPI.MessagingApi do
 
   """
   @spec link_rich_menu_id_to_user(String.t(), String.t(), keyword) :: :ok | :error
-  def link_rich_menu_id_to_user(userId, richMenuId, opts \\ []) do
+  def link_rich_menu_id_to_user(user_id, rich_menu_id, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
-      args: [userId: userId, richMenuId: richMenuId],
+      args: [user_id: user_id, rich_menu_id: rich_menu_id],
       call: {LINE.MessagingAPI.MessagingApi, :link_rich_menu_id_to_user},
-      url: "/v2/bot/user/#{userId}/richmenu/#{richMenuId}",
+      url: "/v2/bot/user/#{user_id}/richmenu/#{rich_menu_id}",
       method: :post,
       response: [{200, nil}],
       opts: opts
@@ -1252,13 +1252,13 @@ defmodule LINE.MessagingAPI.MessagingApi do
 
   """
   @spec set_default_rich_menu(String.t(), keyword) :: :ok | :error
-  def set_default_rich_menu(richMenuId, opts \\ []) do
+  def set_default_rich_menu(rich_menu_id, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
-      args: [richMenuId: richMenuId],
+      args: [rich_menu_id: rich_menu_id],
       call: {LINE.MessagingAPI.MessagingApi, :set_default_rich_menu},
-      url: "/v2/bot/user/all/richmenu/#{richMenuId}",
+      url: "/v2/bot/user/all/richmenu/#{rich_menu_id}",
       method: :post,
       response: [{200, nil}],
       opts: opts
@@ -1324,13 +1324,13 @@ defmodule LINE.MessagingAPI.MessagingApi do
 
   """
   @spec unlink_rich_menu_id_from_user(String.t(), keyword) :: :ok | :error
-  def unlink_rich_menu_id_from_user(userId, opts \\ []) do
+  def unlink_rich_menu_id_from_user(user_id, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
-      args: [userId: userId],
+      args: [user_id: user_id],
       call: {LINE.MessagingAPI.MessagingApi, :unlink_rich_menu_id_from_user},
-      url: "/v2/bot/user/#{userId}/richmenu",
+      url: "/v2/bot/user/#{user_id}/richmenu",
       method: :delete,
       response: [{200, nil}],
       opts: opts
@@ -1375,13 +1375,13 @@ defmodule LINE.MessagingAPI.MessagingApi do
           LINE.MessagingAPI.UpdateRichMenuAliasRequest.t(),
           keyword
         ) :: :ok | {:error, LINE.MessagingAPI.ErrorResponse.t()}
-  def update_rich_menu_alias(richMenuAliasId, body, opts \\ []) do
+  def update_rich_menu_alias(rich_menu_alias_id, body, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
-      args: [richMenuAliasId: richMenuAliasId, body: body],
+      args: [rich_menu_alias_id: rich_menu_alias_id, body: body],
       call: {LINE.MessagingAPI.MessagingApi, :update_rich_menu_alias},
-      url: "/v2/bot/richmenu/alias/#{richMenuAliasId}",
+      url: "/v2/bot/richmenu/alias/#{rich_menu_alias_id}",
       body: body,
       method: :post,
       request: [{"application/json", {LINE.MessagingAPI.UpdateRichMenuAliasRequest, :t}}],
