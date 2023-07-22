@@ -39,13 +39,13 @@ defmodule LINE.LIFFAPI.Liff do
 
   """
   @spec delete_liffapp(String.t(), keyword) :: :ok | :error
-  def delete_liffapp(liffId, opts \\ []) do
+  def delete_liffapp(liff_id, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
-      args: [liffId: liffId],
+      args: [liff_id: liff_id],
       call: {LINE.LIFFAPI.Liff, :delete_liffapp},
-      url: "/liff/v1/apps/#{liffId}",
+      url: "/liff/v1/apps/#{liff_id}",
       method: :delete,
       response: [{200, nil}, {401, nil}, {404, nil}],
       opts: opts
@@ -82,13 +82,13 @@ defmodule LINE.LIFFAPI.Liff do
 
   """
   @spec update_liffapp(String.t(), LINE.LIFFAPI.UpdateLiffAppRequest.t(), keyword) :: :ok | :error
-  def update_liffapp(liffId, body, opts \\ []) do
+  def update_liffapp(liff_id, body, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
-      args: [liffId: liffId, body: body],
+      args: [liff_id: liff_id, body: body],
       call: {LINE.LIFFAPI.Liff, :update_liffapp},
-      url: "/liff/v1/apps/#{liffId}",
+      url: "/liff/v1/apps/#{liff_id}",
       body: body,
       method: :put,
       request: [{"application/json", {LINE.LIFFAPI.UpdateLiffAppRequest, :t}}],

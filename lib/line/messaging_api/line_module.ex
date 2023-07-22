@@ -15,13 +15,13 @@ defmodule LINE.MessagingAPI.LineModule do
   """
   @spec acquire_chat_control(String.t(), LINE.MessagingAPI.AcquireChatControlRequest.t(), keyword) ::
           :ok | :error
-  def acquire_chat_control(chatId, body, opts \\ []) do
+  def acquire_chat_control(chat_id, body, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
-      args: [chatId: chatId, body: body],
+      args: [chat_id: chat_id, body: body],
       call: {LINE.MessagingAPI.LineModule, :acquire_chat_control},
-      url: "/v2/bot/chat/#{chatId}/control/acquire",
+      url: "/v2/bot/chat/#{chat_id}/control/acquire",
       body: body,
       method: :post,
       request: [{"application/json", {LINE.MessagingAPI.AcquireChatControlRequest, :t}}],
@@ -95,13 +95,13 @@ defmodule LINE.MessagingAPI.LineModule do
 
   """
   @spec release_chat_control(String.t(), keyword) :: :ok | :error
-  def release_chat_control(chatId, opts \\ []) do
+  def release_chat_control(chat_id, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
-      args: [chatId: chatId],
+      args: [chat_id: chat_id],
       call: {LINE.MessagingAPI.LineModule, :release_chat_control},
-      url: "/v2/bot/chat/#{chatId}/control/release",
+      url: "/v2/bot/chat/#{chat_id}/control/release",
       method: :post,
       response: [{200, nil}],
       opts: opts

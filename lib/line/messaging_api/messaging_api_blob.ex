@@ -14,13 +14,13 @@ defmodule LINE.MessagingAPI.MessagingApiBlob do
 
   """
   @spec get_message_content(String.t(), keyword) :: {:ok, binary} | :error
-  def get_message_content(messageId, opts \\ []) do
+  def get_message_content(message_id, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
-      args: [messageId: messageId],
+      args: [message_id: message_id],
       call: {LINE.MessagingAPI.MessagingApiBlob, :get_message_content},
-      url: "/v2/bot/message/#{messageId}/content",
+      url: "/v2/bot/message/#{message_id}/content",
       method: :get,
       response: [{200, :binary}],
       opts: opts
@@ -36,13 +36,13 @@ defmodule LINE.MessagingAPI.MessagingApiBlob do
 
   """
   @spec get_message_content_preview(String.t(), keyword) :: {:ok, binary} | :error
-  def get_message_content_preview(messageId, opts \\ []) do
+  def get_message_content_preview(message_id, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
-      args: [messageId: messageId],
+      args: [message_id: message_id],
       call: {LINE.MessagingAPI.MessagingApiBlob, :get_message_content_preview},
-      url: "/v2/bot/message/#{messageId}/content/preview",
+      url: "/v2/bot/message/#{message_id}/content/preview",
       method: :get,
       response: [{200, :binary}],
       opts: opts
@@ -59,13 +59,13 @@ defmodule LINE.MessagingAPI.MessagingApiBlob do
   """
   @spec get_message_content_transcoding_by_message_id(String.t(), keyword) ::
           {:ok, LINE.MessagingAPI.GetMessageContentTranscodingResponse.t()} | :error
-  def get_message_content_transcoding_by_message_id(messageId, opts \\ []) do
+  def get_message_content_transcoding_by_message_id(message_id, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
-      args: [messageId: messageId],
+      args: [message_id: message_id],
       call: {LINE.MessagingAPI.MessagingApiBlob, :get_message_content_transcoding_by_message_id},
-      url: "/v2/bot/message/#{messageId}/content/transcoding",
+      url: "/v2/bot/message/#{message_id}/content/transcoding",
       method: :get,
       response: [{200, {LINE.MessagingAPI.GetMessageContentTranscodingResponse, :t}}],
       opts: opts
@@ -81,13 +81,13 @@ defmodule LINE.MessagingAPI.MessagingApiBlob do
 
   """
   @spec get_rich_menu_image(String.t(), keyword) :: {:ok, binary} | :error
-  def get_rich_menu_image(richMenuId, opts \\ []) do
+  def get_rich_menu_image(rich_menu_id, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
-      args: [richMenuId: richMenuId],
+      args: [rich_menu_id: rich_menu_id],
       call: {LINE.MessagingAPI.MessagingApiBlob, :get_rich_menu_image},
-      url: "/v2/bot/richmenu/#{richMenuId}/content",
+      url: "/v2/bot/richmenu/#{rich_menu_id}/content",
       method: :get,
       response: [{200, :binary}],
       opts: opts
@@ -103,13 +103,13 @@ defmodule LINE.MessagingAPI.MessagingApiBlob do
 
   """
   @spec set_rich_menu_image(String.t(), String.t(), keyword) :: :ok | :error
-  def set_rich_menu_image(richMenuId, body, opts \\ []) do
+  def set_rich_menu_image(rich_menu_id, body, opts \\ []) do
     client = opts[:client] || @default_client
 
     client.request(%{
-      args: [richMenuId: richMenuId, body: body],
+      args: [rich_menu_id: rich_menu_id, body: body],
       call: {LINE.MessagingAPI.MessagingApiBlob, :set_rich_menu_image},
-      url: "/v2/bot/richmenu/#{richMenuId}/content",
+      url: "/v2/bot/richmenu/#{rich_menu_id}/content",
       body: body,
       method: :post,
       request: [{"*/*", :string}],
